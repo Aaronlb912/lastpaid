@@ -60,7 +60,7 @@ export function BuyPage({ buy, mode, onSave, onCancel, onRemove, onDuplicate }) 
       <div className="lp-check-top">
         <div className="lp-check-meta">
           <button type="button" className="lp-quiet lp-back lp-chrome" onClick={onCancel}>
-            Price book
+            List
           </button>
           <p className="lp-check-label">{isNew ? 'New ticket' : 'Ticket'}</p>
         </div>

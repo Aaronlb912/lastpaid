@@ -23,8 +23,8 @@ npm start
 
 Open http://127.0.0.1:48629/
 
-The book is the last-price sheet. Open a row for the guest check.
-Last pay is the money line. Add a buy. Download JSON from More.
+Find an item. Last pay is the useful number. Open a row for the
+guest check. Add a buy. Download JSON from Book.
 
 ## Copy into your app
 

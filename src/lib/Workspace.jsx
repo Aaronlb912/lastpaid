@@ -36,7 +36,9 @@ export function Workspace({ value, onChange }) {
   const found =
     shown.find((group) => group.key === foundKey) ||
     groups.find((group) => group.key === foundKey) ||
-    (shown.length === 1 ? shown[0] : null)
+    null
+  const showingTicket = Boolean(found && foundKey)
+  const showingForm = Boolean(draft || open)
 
   useEffect(() => {
     setTitleDraft(value.title)
@@ -184,46 +186,16 @@ export function Workspace({ value, onChange }) {
     if (next !== value.title) onChange({ ...value, title: next })
   }
 
-  if (draft || open) {
-    const buy = draft || open
-    return (
-      <div className="lp">
-        <BuyPage
-          buy={buy}
-          mode={draft ? 'new' : 'edit'}
-          onSave={saveBuy}
-          onCancel={cancelBuy}
-          onDuplicate={draft ? undefined : () => duplicateBuy(buy)}
-          onRemove={draft ? undefined : () => removeBuy(buy.id)}
-        />
-      </div>
-    )
-  }
-
-  const showingTicket = Boolean(found && (foundKey || shown.length === 1))
-
-  if (showingTicket) {
-    return (
-      <div className="lp">
-        {miss ? <p className="lp-miss" role="alert">{miss}</p> : null}
-        <Ticket
-          group={found}
-          showBack={shown.length !== 1}
-          onBack={() => {
-            setFoundKey('')
-            setQuery('')
-          }}
-          onOpen={(id) => setOpenId(id)}
-          onAdd={() => addBuy(found.item)}
-        />
-      </div>
-    )
+  function goList() {
+    setFoundKey('')
+    setDraft(null)
+    setOpenId('')
   }
 
   return (
     <div className="lp">
-      <div className="lp-sheet">
-        <header className="lp-mast">
+      <div className="lp-app">
+        <header className="lp-bar lp-chrome">
           {renaming ? (
             <input
               ref={titleInput}
@@ -237,7 +209,7 @@ export function Workspace({ value, onChange }) {
                   commitTitle()
                 }
               }}
-              aria-label="Book title"
+              aria-label="Shop name"
             />
           ) : (
             <h1>
@@ -246,30 +218,46 @@ export function Workspace({ value, onChange }) {
               </button>
             </h1>
           )}
-          <div className="lp-mast-actions lp-chrome">
-            <button type="button" className="lp-primary" onClick={() => addBuy(found ? found.item : '')}>
+
+          {!showingForm ? (
+            <label className="lp-find">
+              <span className="lp-file">Find</span>
+              <input
+                ref={searchRef}
+                value={query}
+                placeholder="Find an item"
+                onChange={(event) => {
+                  setQuery(event.target.value)
+                  setFoundKey('')
+                }}
+              />
+            </label>
+          ) : null}
+
+          <div className="lp-bar-actions">
+            <button
+              type="button"
+              className="lp-primary"
+              onClick={() => addBuy(found ? found.item : query)}
+            >
               Add buy
             </button>
-            <details className="lp-more">
-              <summary>More</summary>
-              <div className="lp-more-panel">
-                <button type="button" className="lp-quiet" onClick={() => window.print()}>
-                  Print
+            <details className="lp-book-menu">
+              <summary>Book</summary>
+              <div className="lp-book-panel">
+                <button type="button" onClick={() => window.print()}>
+                  Print list
                 </button>
-                <button type="button" className="lp-quiet" onClick={() => downloadBook(value)}>
+                <button type="button" onClick={() => downloadBook(value)}>
                   Download JSON
                 </button>
-                <button
-                  type="button"
-                  className="lp-quiet"
-                  onClick={() => fileInput.current && fileInput.current.click()}
-                >
+                <button type="button" onClick={() => fileInput.current && fileInput.current.click()}>
                   Load JSON
                 </button>
-                <button type="button" className="lp-quiet" onClick={startBlank}>
+                <button type="button" onClick={startBlank}>
                   Start blank
                 </button>
-                <button type="button" className="lp-quiet" onClick={resetSample}>
+                <button type="button" onClick={resetSample}>
                   Reset sample
                 </button>
               </div>
@@ -295,29 +283,36 @@ export function Workspace({ value, onChange }) {
           </p>
         ) : null}
 
-        {value.buys.length === 0 ? (
-          <div className="lp-empty">
-            <p>No buys in this book.</p>
-            <button type="button" className="lp-primary" onClick={() => addBuy('')}>
-              Add buy
-            </button>
+        {showingForm ? (
+          <div className="lp-check-wrap">
+            <BuyPage
+              buy={draft || open}
+              mode={draft ? 'new' : 'edit'}
+              onSave={saveBuy}
+              onCancel={cancelBuy}
+              onDuplicate={draft ? undefined : () => duplicateBuy(open)}
+              onRemove={draft ? undefined : () => removeBuy(open.id)}
+            />
+          </div>
+        ) : showingTicket ? (
+          <div className="lp-check-wrap">
+            <Ticket
+              group={found}
+              onBack={goList}
+              onOpen={(id) => setOpenId(id)}
+              onAdd={() => addBuy(found.item)}
+            />
           </div>
         ) : (
-          <>
-            <label className="lp-search lp-chrome">
-              <span>Item</span>
-              <input
-                ref={searchRef}
-                value={query}
-                placeholder="What are we buying"
-                onChange={(event) => {
-                  setQuery(event.target.value)
-                  setFoundKey('')
-                }}
-              />
-            </label>
-
-            {shown.length === 0 ? (
+          <div className="lp-body">
+            {value.buys.length === 0 ? (
+              <div className="lp-empty">
+                <p>No buys yet.</p>
+                <button type="button" className="lp-primary" onClick={() => addBuy('')}>
+                  Add buy
+                </button>
+              </div>
+            ) : shown.length === 0 ? (
               <div className="lp-empty">
                 <p>Nothing on file for that.</p>
                 <button type="button" className="lp-primary" onClick={() => addBuy(query)}>
@@ -325,39 +320,22 @@ export function Workspace({ value, onChange }) {
                 </button>
               </div>
             ) : (
-              <table className="lp-book">
-                <thead>
-                  <tr>
-                    <th>Item</th>
-                    <th>Last</th>
-                    <th>Unit</th>
-                    <th>When</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {shown.map((group) => (
-                    <tr key={group.key}>
-                      <td>
-                        <button type="button" className="lp-item-btn" onClick={() => setFoundKey(group.key)}>
-                          {group.item}
-                        </button>
-                        {group.last.unit ? (
-                          <span className="lp-unit-fold">{group.last.unit}</span>
-                        ) : null}
-                      </td>
-                      <td className="lp-num">{formatPrice(group.last.price)}</td>
-                      <td className="lp-unit">{group.last.unit}</td>
-                      <td className="lp-when">{formatDate(group.last.date)}</td>
-                      <td className={`lp-delta lp-delta-${group.delta ? group.delta.dir : 'none'}`}>
-                        {deltaShort(group.delta)}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <ul className="lp-list">
+                {shown.map((group) => (
+                  <li key={group.key}>
+                    <button
+                      type="button"
+                      className="lp-list-row"
+                      onClick={() => setFoundKey(group.key)}
+                    >
+                      <span className="lp-list-item">{group.item}</span>
+                      <span className="lp-list-last">{formatPrice(group.last.price)}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
             )}
-          </>
+          </div>
         )}
       </div>
     </div>
@@ -371,20 +349,16 @@ function deltaShort(delta) {
   return 'same'
 }
 
-function Ticket({ group, showBack, onBack, onOpen, onAdd }) {
+function Ticket({ group, onBack, onOpen, onAdd }) {
   const no = ticketNo(group.last.id)
   return (
     <article className="lp-check">
       <div className="lp-perf" aria-hidden="true" />
       <div className="lp-check-top">
         <div className="lp-check-meta">
-          {showBack ? (
-            <button type="button" className="lp-quiet lp-chrome" onClick={onBack}>
-              Price book
-            </button>
-          ) : (
-            <span className="lp-check-label">Guest check</span>
-          )}
+          <button type="button" className="lp-quiet lp-chrome" onClick={onBack}>
+            List
+          </button>
           <p className="lp-check-date">{formatDate(group.last.date)}</p>
         </div>
         <p className="lp-check-no">#{no}</p>
@@ -399,7 +373,7 @@ function Ticket({ group, showBack, onBack, onOpen, onAdd }) {
         {group.previous ? (
           <button type="button" className="lp-line" onClick={() => onOpen(group.previous.id)}>
             <span>{formatDate(group.previous.date)}</span>
-            <span className="lp-num lp-line-amt">
+            <span className="lp-line-amt">
               {formatPrice(group.previous.price)}
               {group.previous.unit ? ` / ${group.previous.unit}` : ''}
             </span>

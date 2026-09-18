@@ -35,3 +35,21 @@ perforation, red #, last pay is the money line). Buy form sits
 on the same check. They do not share one cream column. Old JSON
 still loads. Do not ship.
 Next session: L-B full history on the ticket, oldest first.
+
+## 2026-09-18 - Rebuild prompt
+
+What runs: http://127.0.0.1:48629/ (L-A still on the page)
+What landed: Rebuild prompt on disk. Keep the guest check.
+Remake the rest as a last-price app, not a manila sheet.
+This file wins over draft-30 L-B through L-L.
+`C:\Users\aaron\OneDrive\Documents\prompts\other prompts\lastpaid-rebuild-prompt.md`
+Next session: R-A new shell. Do not ship.
+
+## 2026-09-18 - R-A
+
+What runs: http://127.0.0.1:48629/
+What landed: App shell. Dark shop bar, find, green Add buy,
+Book menu (not More). Cool gray working list. Manila sheet is
+gone. Guest check still opens from a row. Old JSON still loads.
+Do not ship.
+Next session: R-B last-price list (unit, when, hover, last-change).
