@@ -3,10 +3,16 @@
 What we paid last time for the same thing. Item, vendor, unit,
 price, date. Look it up before you call again.
 
+Drop `src/lib/` into a React app you already have. Host apps pass
+`value` and `onChange`. The demo keeps the book in the browser.
+
+The sample is Creek Bed Stone. Names are fake. Emails end in
+`.example`.
+
 ## Who it is for
 
-A shop or yard that buys the same stone or parts twice a year
-and wants last year's number before they call.
+A shop or yard that already runs React and buys the same stone
+or parts twice a year. They finish "what did we pay last time."
 
 ## Run the demo
 
@@ -17,4 +23,20 @@ npm start
 
 Open http://127.0.0.1:48629/
 
-Session 1 is not on the page yet.
+The book is the last-price sheet. Open a row for the guest check.
+Last pay is the money line. Add a buy. Download JSON from More.
+
+## Copy into your app
+
+Copy `src/lib/` into your React `src/`.
+
+```
+import { Workspace, normalizeBook, sampleBook } from './lib/index.js'
+
+<Workspace value={book} onChange={setBook} />
+```
+
+`value` is a book: `{ title, buys }`. A buy is `{ id, item,
+vendor, unit, price, date, notes }`. `price` is a number.
+`date` is YYYY-MM-DD. Old files still load if they use `name`
+or `amount` instead of `item` and `price`.

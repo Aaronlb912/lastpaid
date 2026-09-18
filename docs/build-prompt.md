@@ -5,7 +5,7 @@ up before you call again. JSON in, JSON out. Drop `src/lib/` into
 a React app you already have.
 
 Prompt file (do not wait for a paste):
-`C:\Users\aaron\OneDrive\Documents\prompts\other prompts\lastpaid-prompt.md`
+`C:\Users\aaron\OneDrive\Documents\prompts\other prompts\draft-30-prompt.md`
 
 Continue later:
 `C:\Users\aaron\OneDrive\Documents\prompts\multi-session-build-prompt-react.md`
@@ -29,22 +29,46 @@ Email on `.example`.
 
 ## Session plan
 
-- [ ] Session 1: scaffold, sample buys, look up last price, add a
+- [x] Session 1: scaffold, sample buys, look up last price, add a
       buy, JSON download, demo running.
-- [ ] Session 2: miss on a blank item or a bad price, persist,
+- [x] Session 2: miss on a blank item or a bad price, persist,
       empty state, search polish.
-- [ ] Session 3: several books or richer fields, CSS, old JSON
+- [x] Session 3: several books or richer fields, CSS, old JSON
       still loads.
+- [x] L-A. Two objects. Book is a last-price sheet. Ticket is a
+      guest check. They do not share one cream column.
+- [ ] L-B. Full history. Ticket lists every pay for that item,
+      oldest first, last at the bottom.
+- [ ] L-C. Paid again. Primary on the ticket. Prefills item,
+      vendor, unit, last price, today.
+- [ ] L-D. Vendor chips. From vendors in the book. Filter the
+      sheet.
+- [ ] L-E. Sort. Item, last date, last price. Stored on the book.
+- [ ] L-F. Qty and sku. Optional. Last price stays per unit.
+      Junk qty misses.
+- [ ] L-G. High / low. Quiet on the ticket. Not a chart.
+- [ ] L-H. Print. Print this ticket. Print the book. Chrome gone.
+- [ ] L-I. Keyboard. j/k in the book, Enter opens the ticket,
+      n adds. / find stays.
+- [ ] L-J. Empty book. A blank check, not a lecture. Notes on
+      the ticket if the last pay has them.
+- [ ] L-K. Last change. Book row can show when the price last
+      moved, quiet.
+- [ ] L-L. Application CSS. Tabular lining figures, perforation,
+      ticket number type, book density, focus, 390, print.
 - [ ] Session ship: screenshots, demo video, README Demo, LinkedIn
       draft, SHIPPED.
 
 ## This session
 
-Session 1. Get find-last-price and add-a-buy on a running page.
+L-A. Book is a wider last-price sheet. Ticket is a narrow guest
+check with a tear and a number. Last pay is the money line.
+Do not ship.
 
 ## Next session
 
-Session 2. Misses, persist polish.
+L-B. Full history on the ticket, oldest first, last pay on the
+bottom. Open this repo. Do not ship.
 
 ## Usefulness check
 
