@@ -22,7 +22,11 @@ export function SiteShell({ path, session, children }) {
           </a>
         ) : null}
       </header>
-      <div className="lp-site-body">{children}</div>
+      <div className="lp-site-body">
+        <div className="lp-sit" key={path}>
+          {children}
+        </div>
+      </div>
       <footer className="lp-site-foot">
         Your prices stay on this computer. You do not need an account.
       </footer>

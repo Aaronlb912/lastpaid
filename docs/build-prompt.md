@@ -5,7 +5,7 @@ up before you call again. JSON in, JSON out. Drop `src/lib/` into
 a React app you already have.
 
 Prompt file (do not wait for a paste):
-`C:\Users\aaron\OneDrive\Documents\prompts\other prompts\lastpaid-plain-prompt.md`
+`C:\Users\aaron\OneDrive\Documents\prompts\other prompts\lastpaid-motion-prompt.md`
 
 Continue later:
 `C:\Users\aaron\OneDrive\Documents\prompts\multi-session-build-prompt-react.md`
@@ -62,17 +62,21 @@ Email on `.example`.
 - [x] V-C. How walkthrough, ordinary talk.
 - [x] V-D. About + README voice.
 - [x] V-E. List, receipt, form chrome.
+- [x] M-1. Motion tokens and reduced motion.
+- [x] M-2. Routes and landing check.
+- [x] M-3. List and guest check motion.
+- [x] M-4. Walk landing, list, check, 390, print.
 - [ ] Session ship: screenshots, demo video, README Demo, LinkedIn
       draft, SHIPPED.
 
 ## This session
 
-V-A through V-E. Spoken copy, fuller sentences. Do not ship.
+M-1 through M-4. Check lands, last pay settles. Do not ship.
 
 ## Next session
 
-Copy sounds like a person. Ship later only if he asks. Do not
-start the video. Do not mark SHIPPED.
+Motion landed. Ship later only if he asks. Do not start the
+video. Do not mark SHIPPED.
 
 ## Usefulness check
 

@@ -384,7 +384,7 @@ export function Workspace({ value, onChange, onHome, onSignOut }) {
         ) : null}
 
         {showingForm ? (
-          <div className="lp-check-wrap">
+          <div className="lp-check-wrap" key={draft ? draft.id : open.id}>
             <BuyPage
               buy={draft || open}
               mode={draft ? 'new' : 'edit'}
@@ -395,7 +395,7 @@ export function Workspace({ value, onChange, onHome, onSignOut }) {
             />
           </div>
         ) : showingTicket ? (
-          <div className="lp-check-wrap">
+          <div className="lp-check-wrap" key={found.key}>
             <Ticket
               group={found}
               onBack={goList}

@@ -1,4 +1,7 @@
 .lp-site {
+  --lp-move: 180ms;
+  --lp-move-slow: 240ms;
+  --lp-ease: ease-out;
   min-height: 100vh;
   width: 100%;
   display: flex;
@@ -64,6 +67,7 @@
   font-size: 14px;
   text-decoration: none;
   cursor: pointer;
+  transition: background-color 120ms var(--lp-ease);
 }
 
 .lp-site-primary:hover,
@@ -222,6 +226,7 @@
   margin: 0;
   font-size: 14px;
   color: #a33a28;
+  animation: lp-miss 180ms var(--lp-ease);
 }
 
 .lp-site-text {
@@ -271,5 +276,25 @@
 
   .lp-land-check .lp-line-last-pay {
     font-size: 28px;
+  }
+}
+
+.lp-sit {
+  animation: lp-sit var(--lp-move-slow) var(--lp-ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-site *,
+  .lp-site *::before,
+  .lp-site *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media print {
+  .lp-sit,
+  .lp-check .lp-line-last-pay {
+    animation: none !important;
   }
 }

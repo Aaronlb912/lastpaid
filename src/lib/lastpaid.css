@@ -14,6 +14,9 @@
   --lp-app-type: Bahnschrift, 'Trebuchet MS', 'Segoe UI', sans-serif;
   --lp-check-type: Calibri, 'Trebuchet MS', sans-serif;
   --lp-num: 'Cascadia Mono', Consolas, 'Courier New', monospace;
+  --lp-move: 180ms;
+  --lp-move-slow: 240ms;
+  --lp-ease: ease-out;
   min-height: 100vh;
 }
 
@@ -124,6 +127,7 @@
   font: inherit;
   font-size: 14px;
   cursor: pointer;
+  transition: background-color 120ms var(--lp-ease);
 }
 
 .lp-bar button.lp-primary:hover,
@@ -166,6 +170,10 @@
   flex-direction: column;
 }
 
+.lp-book-menu[open] .lp-book-panel {
+  animation: lp-sit 160ms var(--lp-ease);
+}
+
 .lp-book-panel button {
   background: transparent;
   border: 0;
@@ -203,6 +211,7 @@
 
 .lp-miss {
   color: var(--lp-up);
+  animation: lp-miss 180ms var(--lp-ease);
 }
 
 .lp-undo {
@@ -239,6 +248,7 @@
   padding: 7px 12px;
   font: inherit;
   cursor: pointer;
+  transition: background-color 120ms var(--lp-ease);
 }
 
 .lp-tools {
@@ -279,6 +289,8 @@
   font-size: 13px;
   padding: 4px 9px;
   cursor: pointer;
+  transition: background-color 120ms var(--lp-ease), color 120ms var(--lp-ease),
+    border-color 120ms var(--lp-ease);
 }
 
 .lp-vendors button.is-on,
@@ -315,6 +327,8 @@
   font: inherit;
   text-align: left;
   cursor: pointer;
+  transition: background-color var(--lp-move) var(--lp-ease),
+    box-shadow var(--lp-move) var(--lp-ease);
 }
 
 .lp-list-row:hover,
@@ -599,6 +613,7 @@
   font-size: 12px;
   padding: 8px 12px;
   cursor: pointer;
+  transition: background-color 120ms var(--lp-ease);
 }
 
 .lp-check button.lp-primary:hover,
@@ -783,5 +798,62 @@
   .lp-list-row.is-sel {
     box-shadow: none;
     background: transparent;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@keyframes lp-sit {
+  from {
+    opacity: 0.001;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes lp-total {
+  from {
+    opacity: 0.001;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes lp-miss {
+  from {
+    opacity: 0.001;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.lp-check-wrap .lp-check {
+  animation: lp-sit var(--lp-move-slow) var(--lp-ease);
+}
+
+.lp-check .lp-line-last-pay {
+  animation: lp-total var(--lp-move) var(--lp-ease) 90ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lp *,
+  .lp *::before,
+  .lp *::after {
+    animation: none !important;
+    transition: none !important;
   }
 }

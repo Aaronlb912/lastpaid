@@ -7,6 +7,7 @@ import { SignIn } from './site/SignIn.jsx'
 import { SiteShell } from './site/SiteShell.jsx'
 import { goHash, readHash } from './site/hash.js'
 import { closeSession, hasSession, openSession, readShop, writeShop } from './site/shop.js'
+import './lib/lastpaid.css'
 import './site/site.css'
 
 const STORAGE_KEY = 'lastpaid-book'

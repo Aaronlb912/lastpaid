@@ -114,3 +114,19 @@ What landed: Spoken copy. Landing says look it up before you
 call. How walks Creek Bed Stone at $51 like a coworker. Chrome
 says Add a new item and Pay this again. Do not ship.
 Next session: Ship later only if he asks.
+
+## 2026-09-18 - Motion prompt
+
+What runs: http://127.0.0.1:48629/ (voice copy still on the page)
+What landed: Motion prompt on disk. Check on the counter, last
+pay settles. No library. Reduced motion off.
+`C:\Users\aaron\OneDrive\Documents\prompts\other prompts\lastpaid-motion-prompt.md`
+Next session: M-1 through M-4. Do not ship.
+
+## 2026-09-18 - Motion M-1 through M-4
+
+What runs: http://127.0.0.1:48629/
+What landed: Short CSS motion. Pages sit down. Guest check
+lands. Last pay settles a beat later. Reduced motion off.
+Do not ship.
+Next session: Ship later only if he asks.
