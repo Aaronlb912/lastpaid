@@ -5,7 +5,7 @@ up before you call again. JSON in, JSON out. Drop `src/lib/` into
 a React app you already have.
 
 Prompt file (do not wait for a paste):
-`C:\Users\aaron\OneDrive\Documents\prompts\other prompts\lastpaid-motion-prompt.md`
+`C:\Users\aaron\OneDrive\Documents\prompts\finished-product-prompt.md`
 
 Continue later:
 `C:\Users\aaron\OneDrive\Documents\prompts\multi-session-build-prompt-react.md`
@@ -66,17 +66,17 @@ Email on `.example`.
 - [x] M-2. Routes and landing check.
 - [x] M-3. List and guest check motion.
 - [x] M-4. Walk landing, list, check, 390, print.
-- [ ] Session ship: screenshots, demo video, README Demo, LinkedIn
+- [x] Session ship: screenshots, demo video, README Demo, LinkedIn
       draft, SHIPPED.
 
 ## This session
 
-M-1 through M-4. Check lands, last pay settles. Do not ship.
+Ship. Screenshots, demo video, README Demo, LinkedIn draft.
 
 ## Next session
 
-Motion landed. Ship later only if he asks. Do not start the
-video. Do not mark SHIPPED.
+SHIPPED. Next chat in this repo: finished-product prompt if a
+stranger still cannot land. Do not start a second product.
 
 ## Usefulness check
 
@@ -90,8 +90,8 @@ video. Do not mark SHIPPED.
 6. Coworker test? Yes. Zip `src/lib/`. They import it.
 7. Keep a copy? Yes. Download JSON.
 8. Miss and recover? Yes. Blank item. Bad price. Empty book.
-9. README says how? Session 1: who, run, local URL. Full copy
-   `src/lib/` before SHIPPED.
+9. README says how? Yes. Copy `src/lib/`, import, props, three
+   tool screenshots, github.com player.
 
 ## Go deep (done-means)
 

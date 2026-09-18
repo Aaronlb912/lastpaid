@@ -130,3 +130,14 @@ What landed: Short CSS motion. Pages sit down. Guest check
 lands. Last pay settles a beat later. Reduced motion off.
 Do not ship.
 Next session: Ship later only if he asks.
+
+## 2026-09-18 - SHIPPED
+
+What runs: http://127.0.0.1:48629/
+Hosted: https://aaronlb912.github.io/lastpaid/
+What landed: Page / result / miss shots. Andrew Neural walkthrough
+in docs/media/lastpaid-demo.mp4. README Demo plays on github.com.
+LinkedIn draft on disk, not committed. GitHub Pages workflow.
+SHIPPED.
+Next session: finished-product prompt if a stranger still cannot
+land. Do not start a second product.

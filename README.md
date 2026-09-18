@@ -21,6 +21,28 @@ A shop or yard that already runs React and buys the same stone
 or parts twice a year. They want last year's number before they
 call again.
 
+## What you get
+
+Copy `src/lib/`. That folder is the component.
+
+- `Workspace.jsx` - the last-price list plus the guest check
+- `BuyPage.jsx` - add a price and edit one
+- `lastpaid.css` - the look
+- `lastpaid-json.js` - last pay, download, load parse
+- `sample-buys.js` - Creek Bed Stone sample
+- `index.js` - the import
+
+There is no account. Host apps pass `value` and `onChange`. The
+demo keeps the book in this browser. Load the sample again if
+you want Creek Bed Stone back. Older files with `name` or
+`amount` still open.
+
+Find an item. The green number is last pay. Click the row for
+the older prices on a guest check. Pay this again prefills.
+A blank item or a word in the amount misses. Escape cancels.
+Quiet Remove with undo. Print the receipt or the list. j and k
+move. Enter opens. n adds. / finds.
+
 ## Run the demo
 
 ```
@@ -40,19 +62,45 @@ Try Creek Bed Stone. Find Pennsylvania blue stone. The green
 number is $51. Click the row for the older prices. Add a new
 item if it is not on the list. Book saves a copy.
 
+Hosted copy: https://aaronlb912.github.io/lastpaid/
+
+Files: https://github.com/Aaronlb912/lastpaid
+
+## Demo
+
+![Creek Bed Stone. Last pay is the green number on the right.](docs/media/lastpaid-page.png)
+
+![Pennsylvania blue stone. Last pay is the big green fifty-one.](docs/media/lastpaid-result.png)
+
+![Type a word in amount. The amount has to be a number, like 51.](docs/media/lastpaid-miss.png)
+
+https://github.com/user-attachments/assets/5c1af282-8993-4936-9ac5-54e5916ad4f6
+
+Repo copy: [docs/media/lastpaid-demo.mp4](docs/media/lastpaid-demo.mp4)
+
+Voice is Microsoft Andrew Neural. Music is Wallpaper by Kevin MacLeod (incompetech.com), CC BY 3.0.
+
 ## Copy into your app
 
 Skip the first pages if you already have a React app. Copy
 `src/lib/` into your React `src/`.
 
 ```
-import { Workspace, normalizeBook, sampleBook } from './lib/index.js'
+import { useState } from 'react'
+import { Workspace, sampleBook } from './lib/index.js'
 
-<Workspace value={book} onChange={setBook} />
+export function Prices() {
+  const [book, setBook] = useState(sampleBook)
+  return <Workspace value={book} onChange={setBook} />
+}
 ```
+
+Change the title and the buys. Edit `src/lib/lastpaid.css` if
+you want a different look.
 
 `value` is a book: `{ title, buys, sort }`. `sort` is `item`,
 `date`, or `price`. A buy is `{ id, item, vendor, unit, price,
 date, notes, sku, qty }`. `price` is a number. `qty` is optional.
-`date` is YYYY-MM-DD. Old files still load if they use `name`
-or `amount` instead of `item` and `price`.
+`date` is YYYY-MM-DD. Pass `onChange` when the book changes. Old
+files still load if they use `name` or `amount` instead of `item`
+and `price`.
