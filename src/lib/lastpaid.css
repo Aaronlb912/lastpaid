@@ -157,7 +157,7 @@
   right: 0;
   top: 100%;
   z-index: 3;
-  min-width: 11rem;
+  min-width: 16rem;
   padding: 8px 0;
   background: #f7f8f9;
   color: var(--lp-ink);
@@ -248,6 +248,13 @@
   justify-content: space-between;
   gap: 10px 16px;
   margin: 0 0 12px;
+}
+
+.lp-list-hint {
+  flex: 1 1 100%;
+  margin: 0;
+  font-size: 13px;
+  color: var(--lp-ink-soft);
 }
 
 .lp-vendors,
@@ -556,6 +563,13 @@
   margin: 8px 0 0;
   font-size: 12px;
   text-align: right;
+}
+
+.lp-check-help {
+  margin: 10px 0 0;
+  font-family: var(--lp-app-type);
+  font-size: 12px;
+  color: var(--lp-ink-soft);
 }
 
 .lp-delta-up {

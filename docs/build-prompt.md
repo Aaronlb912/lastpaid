@@ -5,7 +5,7 @@ up before you call again. JSON in, JSON out. Drop `src/lib/` into
 a React app you already have.
 
 Prompt file (do not wait for a paste):
-`C:\Users\aaron\OneDrive\Documents\prompts\other prompts\lastpaid-site-prompt.md`
+`C:\Users\aaron\OneDrive\Documents\prompts\other prompts\lastpaid-copy-prompt.md`
 
 Continue later:
 `C:\Users\aaron\OneDrive\Documents\prompts\multi-session-build-prompt-react.md`
@@ -52,17 +52,22 @@ Email on `.example`.
 - [x] P-C. Sign in (shop name, optional PIN).
 - [x] P-D. Gate the book. Sign out.
 - [x] P-E. How and About.
+- [x] C-A. Landing + titles.
+- [x] C-B. Sign in copy.
+- [x] C-C. How walkthrough.
+- [x] C-D. About + README.
+- [x] C-E. Book labels.
 - [ ] Session ship: screenshots, demo video, README Demo, LinkedIn
       draft, SHIPPED.
 
 ## This session
 
-P-A through P-E. Landing, sign in, how, about around the book.
+C-A through C-E. Copy so a stranger can tell what last paid is.
 Do not ship.
 
 ## Next session
 
-Site pages landed. Ship later only if he asks. Do not start the
+Copy is readable. Ship later only if he asks. Do not start the
 video. Do not mark SHIPPED.
 
 ## Usefulness check

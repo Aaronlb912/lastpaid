@@ -146,10 +146,20 @@
   color: #5c6568;
 }
 
+.lp-land-example {
+  justify-self: end;
+}
+
+.lp-land-caption {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: #5c6568;
+  max-width: 20rem;
+}
+
 .lp-land-check {
   width: 20rem;
   max-width: 100%;
-  justify-self: end;
 }
 
 .lp-land-check .lp-line-last {
@@ -160,7 +170,17 @@
 }
 
 .lp-counter {
-  max-width: 22rem;
+  max-width: 28rem;
+}
+
+.lp-choices {
+  margin-top: 8px;
+}
+
+.lp-choices p {
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: #5c6568;
 }
 
 .lp-counter-form {
@@ -244,6 +264,7 @@
     grid-template-columns: 1fr;
   }
 
+  .lp-land-example,
   .lp-land-check {
     justify-self: start;
   }

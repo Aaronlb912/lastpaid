@@ -1,23 +1,18 @@
 export function About() {
   return (
     <article className="lp-page">
-      <h1>About</h1>
+      <h1>Copy into a React app</h1>
+      <p>You do not need this page to try the demo. Use How to use it instead.</p>
       <p>
-        Last paid is for a shop or yard that already runs React and buys the
-        same stone or parts twice a year. They finish "what did we pay last
-        time."
+        The log lives in this browser. Naming a shop is a lock on this computer,
+        not an account.
       </p>
       <p>
-        The book lives in this browser. Sign in is a desk lock on this computer,
-        not an account. There is no signup and nothing to email if you forget a
-        PIN. Start blank or load JSON.
+        If you already run a React app, copy <code>src/lib/</code> into your{' '}
+        <code>src/</code>. Pass <code>value</code> and <code>onChange</code>.
+        The landing and shop pages are only this demo. The README has the import.
       </p>
-      <p>
-        Copy <code>src/lib/</code> into a React app you already have. Pass{' '}
-        <code>value</code> and <code>onChange</code>. The site pages are only
-        this demo.
-      </p>
-      <p>Sample names are fake. Emails end in .example.</p>
+      <p>Creek Bed Stone names are fake. Emails end in .example.</p>
     </article>
   )
 }

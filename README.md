@@ -1,13 +1,16 @@
 # Last paid
 
-What we paid last time for the same thing. Item, vendor, unit,
-price, date. Look it up before you call again.
+A price log of what you paid last time for the same thing. Item,
+vendor, unit, price, date. Look it up before you call the quarry.
+Last pay is the useful number. Older pays sit on a guest check.
 
-Drop `src/lib/` into a React app you already have. Host apps pass
-`value` and `onChange`. The demo keeps the book in the browser.
+The demo has a landing, a shop name on this computer (optional
+PIN, not an account), how to use it, and the log. Drop `src/lib/`
+into a React app you already have. Host apps pass `value` and
+`onChange`. The demo keeps the log in the browser.
 
-The sample is Creek Bed Stone. Names are fake. Emails end in
-`.example`.
+The sample is Creek Bed Stone. Pennsylvania blue stone last paid
+$51. Names are fake. Emails end in `.example`.
 
 ## Who it is for
 
@@ -24,17 +27,19 @@ npm start
 Open http://127.0.0.1:48629/
 
 - `/#/` landing
-- `/#/in` sign in (shop name, optional PIN on this browser)
-- `/#/book` the last-price book
+- `/#/in` your shop on this computer
+- `/#/book` the price log
 - `/#/how` how to use it
-- `/#/about` local copy, no account
+- `/#/about` copy into a React app
 
-Find an item. Last pay is the useful number. Open a row for the
-guest check. Add a buy. Download JSON from Book.
+Try the Creek Bed Stone sample. Find an item. Last pay is the
+green number. Open a row for the guest check. New item if it is
+not on the list. Book saves a file.
 
 ## Copy into your app
 
-Copy `src/lib/` into your React `src/`.
+Copy `src/lib/` into your React `src/`. You do not need the
+landing pages for that.
 
 ```
 import { Workspace, normalizeBook, sampleBook } from './lib/index.js'

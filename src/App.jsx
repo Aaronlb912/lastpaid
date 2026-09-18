@@ -98,6 +98,17 @@ export default function App() {
     if (path === '/book' && !session) goHash('/in')
   }, [path, session])
 
+  useEffect(() => {
+    const titles = {
+      '/': 'Last paid',
+      '/in': 'Your shop · Last paid',
+      '/how': 'How to use last paid',
+      '/about': 'Copy into a React app · Last paid',
+      '/book': `${book.title} · Last paid`,
+    }
+    document.title = titles[view] || 'Last paid'
+  }, [view, book.title])
+
   if (view === '/book') {
     return (
       <Workspace
@@ -109,10 +120,13 @@ export default function App() {
     )
   }
 
-  let page = <Landing session={session} onOpenSample={openSample} />
+  let page = (
+    <Landing session={session} shopTitle={book.title} onOpenSample={openSample} />
+  )
   if (view === '/in') {
     page = (
       <SignIn
+        shopTitle={book.title}
         onOpenShop={openShop}
         onOpenSample={openSample}
         onStartBlank={startBlank}

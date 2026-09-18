@@ -346,10 +346,10 @@ export function parseFile(text) {
   try {
     const data = JSON.parse(text)
     if (data == null || (typeof data !== 'object' && !Array.isArray(data))) {
-      return { ok: false, error: 'That JSON is not a book of buys.' }
+      return { ok: false, error: 'That file is not a last-paid log.' }
     }
     return { ok: true, book: normalizeBook(data) }
   } catch {
-    return { ok: false, error: 'That file is not JSON.' }
+    return { ok: false, error: 'That file is not a saved log.' }
   }
 }

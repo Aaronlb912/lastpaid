@@ -7,23 +7,23 @@ export function SiteShell({ path, session, children }) {
         </a>
         <nav className="lp-site-nav" aria-label="Site">
           <a href="#/how" className={path === '/how' ? 'is-on' : undefined}>
-            How
+            How to use it
           </a>
           <a href="#/about" className={path === '/about' ? 'is-on' : undefined}>
-            About
+            Copy into React
           </a>
           <a href="#/in" className={path === '/in' ? 'is-on' : undefined}>
-            Sign in
+            Your shop
           </a>
         </nav>
         {session ? (
           <a className="lp-site-primary" href="#/book">
-            Open book
+            Open the log
           </a>
         ) : null}
       </header>
       <div className="lp-site-body">{children}</div>
-      <footer className="lp-site-foot">The book stays on this computer. No account.</footer>
+      <footer className="lp-site-foot">The log stays on this computer. No account.</footer>
     </div>
   )
 }

@@ -1,30 +1,31 @@
 import { useState } from 'react'
 import { pinOk, readShop, sameShop } from './shop.js'
 
-export function SignIn({ onOpenShop, onOpenSample, onStartBlank }) {
+export function SignIn({ shopTitle, onOpenShop, onOpenSample, onStartBlank }) {
   const stored = readShop()
-  const [name, setName] = useState(stored.name)
+  const [name, setName] = useState(stored.name || shopTitle || '')
   const [pin, setPin] = useState('')
   const [miss, setMiss] = useState('')
+  const openLabel = (name.trim() || stored.name || shopTitle || '').trim()
 
   function check(forBlank) {
     const shopName = name.trim()
     if (!shopName) {
-      setMiss('Put the shop name.')
+      setMiss('Type a shop name. It becomes the title on the list.')
       return null
     }
     const typed = pin.trim()
     if (stored.pin && sameShop(shopName, stored.name)) {
       if (!typed) {
-        setMiss('Type the PIN for this shop.')
+        setMiss('Type the PIN you set for this shop on this computer.')
         return null
       }
       if (typed !== stored.pin) {
-        setMiss('That PIN does not match.')
+        setMiss('That PIN does not match the one saved on this computer.')
         return null
       }
     } else if (typed && !pinOk(typed)) {
-      setMiss('PIN is 4 digits or more.')
+      setMiss('A PIN has to be 4 digits or more.')
       return null
     }
     setMiss('')
@@ -34,8 +35,11 @@ export function SignIn({ onOpenShop, onOpenSample, onStartBlank }) {
 
   return (
     <div className="lp-counter">
-      <h1>Sign in</h1>
-      <p>Shop name on this computer. PIN is optional. There is no email and no account.</p>
+      <h1>Your shop on this computer</h1>
+      <p>
+        Name this computer's shop, then open the price log. This is not an
+        account. There is no email.
+      </p>
       <form
         className="lp-counter-form"
         onSubmit={(event) => {
@@ -55,8 +59,9 @@ export function SignIn({ onOpenShop, onOpenSample, onStartBlank }) {
             }}
           />
         </label>
+        <p className="lp-counter-hint">This name is the title on the list.</p>
         <label>
-          PIN
+          PIN, optional
           <input
             type="password"
             inputMode="numeric"
@@ -73,28 +78,36 @@ export function SignIn({ onOpenShop, onOpenSample, onStartBlank }) {
             {miss}
           </p>
         ) : (
-          <p className="lp-counter-hint">Leave PIN blank if you do not want a lock.</p>
+          <p className="lp-counter-hint">
+            A PIN only locks this browser. Forget it and start a blank log or
+            load a saved file.
+          </p>
         )}
         <button type="submit" className="lp-site-primary">
-          Open shop
+          {openLabel ? `Open ${openLabel}` : 'Open the log already here'}
         </button>
       </form>
-      <p className="lp-land-quiet">
-        <button
-          type="button"
-          className="lp-site-text"
-          onClick={() => {
-            const next = check(true)
-            if (next) onStartBlank(next)
-          }}
-        >
-          Start blank
-        </button>
-        {' · '}
-        <button type="button" className="lp-site-text" onClick={onOpenSample}>
-          Open Creek Bed Stone
-        </button>
-      </p>
+      <div className="lp-choices">
+        <p>
+          <button type="button" className="lp-site-text" onClick={onOpenSample}>
+            Try the Creek Bed Stone sample
+          </button>
+          <span> Practice with a fake yard.</span>
+        </p>
+        <p>
+          <button
+            type="button"
+            className="lp-site-text"
+            onClick={() => {
+              const next = check(true)
+              if (next) onStartBlank(next)
+            }}
+          >
+            Start a blank log
+          </button>
+          <span> Your own items. Needs a shop name first.</span>
+        </p>
+      </div>
     </div>
   )
 }

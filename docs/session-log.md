@@ -80,3 +80,20 @@ What landed: Hash site around the book. Landing, sign in (shop
 name, optional PIN on this browser), how, about. Book still the
 guest check and last-price list. No account. Do not ship.
 Next session: Ship later only if he asks.
+
+## 2026-09-18 - Copy prompt
+
+What runs: http://127.0.0.1:48629/ (site pages still the same)
+What landed: Copy prompt on disk. Screens feel like insider
+yard talk. Next pass rewrites words so a stranger can tell
+what last paid is and what to do.
+`C:\Users\aaron\OneDrive\Documents\prompts\other prompts\lastpaid-copy-prompt.md`
+Next session: C-A through C-E. Do not ship.
+
+## 2026-09-18 - Copy C-A through C-E
+
+What runs: http://127.0.0.1:48629/
+What landed: Plain copy. Landing says price log. How walks Creek
+Bed Stone at $51. Shop page is not an account. Book says New
+item and Pay this again. Do not ship.
+Next session: Ship later only if he asks.

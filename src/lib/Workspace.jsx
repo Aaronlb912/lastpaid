@@ -263,7 +263,7 @@ export function Workspace({ value, onChange, onHome, onSignOut }) {
       setRenaming(false)
       onChange(parsed.book)
     }
-    reader.onerror = () => setMiss('Could not read that file.')
+    reader.onerror = () => setMiss('Could not read that saved file.')
     reader.readAsText(file)
   }
 
@@ -287,7 +287,7 @@ export function Workspace({ value, onChange, onHome, onSignOut }) {
         <header className="lp-bar lp-chrome">
           {onHome ? (
             <button type="button" className="lp-home" onClick={onHome}>
-              Last paid
+              Front of last paid
             </button>
           ) : null}
           {renaming ? (
@@ -335,29 +335,29 @@ export function Workspace({ value, onChange, onHome, onSignOut }) {
               className="lp-primary"
               onClick={() => addBuy(found ? found.item : query)}
             >
-              Add buy
+              New item
             </button>
             <details className="lp-book-menu">
               <summary>Book</summary>
               <div className="lp-book-panel">
                 <button type="button" onClick={() => window.print()}>
-                  {showingTicket ? 'Print check' : 'Print list'}
+                  {showingTicket ? 'Print this check' : 'Print this list'}
                 </button>
                 <button type="button" onClick={() => downloadBook(value)}>
-                  Download JSON
+                  Save a file
                 </button>
                 <button type="button" onClick={() => fileInput.current && fileInput.current.click()}>
-                  Load JSON
+                  Load a file
                 </button>
                 <button type="button" onClick={startBlank}>
-                  Start blank
+                  Start a blank log
                 </button>
                 <button type="button" onClick={resetSample}>
-                  Reset sample
+                  Reset to the Creek Bed sample
                 </button>
                 {onSignOut ? (
                   <button type="button" onClick={onSignOut}>
-                    Sign out
+                    Close this computer's lock
                   </button>
                 ) : null}
               </div>
@@ -376,7 +376,7 @@ export function Workspace({ value, onChange, onHome, onSignOut }) {
 
         {undo ? (
           <p className="lp-undo">
-            Removed {undo.buy.item || 'a buy'}.
+            Removed {undo.buy.item || 'a pay'}.
             <button type="button" className="lp-quiet" onClick={undoRemove}>
               Undo
             </button>
@@ -407,14 +407,17 @@ export function Workspace({ value, onChange, onHome, onSignOut }) {
           <div className="lp-body">
             {value.buys.length === 0 ? (
               <div className="lp-empty">
-                <p>Nothing paid yet.</p>
+                <p>Nothing paid yet. Add the first item.</p>
                 <button type="button" className="lp-primary" onClick={() => addBuy('')}>
-                  Add buy
+                  New item
                 </button>
               </div>
             ) : (
               <>
                 <div className="lp-tools lp-chrome">
+                  <p className="lp-list-hint">
+                    Tap a row to see every pay. Last pay is the green number.
+                  </p>
                   {vendors.length > 1 ? (
                     <div className="lp-vendors">
                       {vendors.map((name) => (
@@ -446,9 +449,9 @@ export function Workspace({ value, onChange, onHome, onSignOut }) {
 
                 {groups.length === 0 ? (
                   <div className="lp-empty">
-                    <p>Nothing on file for that.</p>
+                    <p>Nothing on file for that. Add it as a new item.</p>
                     <button type="button" className="lp-primary" onClick={() => addBuy(query)}>
-                      Add buy
+                      New item
                     </button>
                   </div>
                 ) : (
@@ -509,7 +512,7 @@ function Ticket({ group, onBack, onOpen, onAdd }) {
       <div className="lp-check-top">
         <div className="lp-check-meta">
           <button type="button" className="lp-quiet lp-chrome" onClick={onBack}>
-            List
+            Back to the list
           </button>
           <p className="lp-check-date">{formatDate(group.last.date)}</p>
         </div>
@@ -522,7 +525,7 @@ function Ticket({ group, onBack, onOpen, onAdd }) {
       </p>
       <div className="lp-check-cols">
         <span>When</span>
-        <span>Amt</span>
+        <span>Amount</span>
       </div>
       <div className="lp-ticket-lines">
         {oldest.map((buy, index) => {
@@ -571,9 +574,10 @@ function Ticket({ group, onBack, onOpen, onAdd }) {
         <p className="lp-ticket-note">First time on file.</p>
       )}
       {group.last.notes ? <p className="lp-check-notes">{group.last.notes}</p> : null}
+      <p className="lp-check-help lp-chrome">Older pays above. Last pay is the big green number.</p>
       <div className="lp-check-actions lp-chrome">
         <button type="button" className="lp-primary" onClick={onAdd}>
-          Paid again
+          Pay this again
         </button>
       </div>
       <div className="lp-check-stub">

@@ -56,11 +56,16 @@ export function BuyPage({ buy, mode, onSave, onCancel, onRemove, onDuplicate }) 
     }))
   }
 
-  const heading = isNew ? (buy.item ? buy.item : 'New buy') : item.trim() || 'Untitled buy'
+  const heading = isNew ? (buy.item ? buy.item : 'New pay') : item.trim() || 'Untitled pay'
   const itemMiss = miss === 'item'
   const priceMiss = miss === 'price-blank' || miss === 'price-junk'
   const qtyMiss = miss === 'qty'
-  const priceHint = miss === 'price-blank' ? 'Need a price.' : miss === 'price-junk' ? 'Price has to be a number.' : ''
+  const priceHint =
+    miss === 'price-blank'
+      ? 'Type a price for this pay.'
+      : miss === 'price-junk'
+        ? 'Price has to be a number.'
+        : ''
   const parsedStub = parsePrice(price)
   const stubPrice = parsedStub.ok ? formatPrice(parsedStub.value) : price || '—'
 
@@ -70,9 +75,9 @@ export function BuyPage({ buy, mode, onSave, onCancel, onRemove, onDuplicate }) 
       <div className="lp-check-top">
         <div className="lp-check-meta">
           <button type="button" className="lp-quiet lp-back lp-chrome" onClick={onCancel}>
-            List
+            Back to the list
           </button>
-          <p className="lp-check-label">{isNew ? 'New ticket' : 'Ticket'}</p>
+          <p className="lp-check-label">{isNew ? 'New pay' : 'This pay'}</p>
         </div>
         <p className="lp-check-no">#{ticketNo(buy.id)}</p>
       </div>
@@ -86,7 +91,7 @@ export function BuyPage({ buy, mode, onSave, onCancel, onRemove, onDuplicate }) 
             onChange={(event) => setItem(event.target.value)}
             autoFocus
           />
-          {itemMiss ? <span className="lp-field-hint">Need an item.</span> : null}
+          {itemMiss ? <span className="lp-field-hint">Type an item name.</span> : null}
         </label>
         <label className="lp-field">
           <span>Vendor</span>
@@ -97,7 +102,7 @@ export function BuyPage({ buy, mode, onSave, onCancel, onRemove, onDuplicate }) 
           />
         </label>
         <label className={`lp-field lp-field-price${priceMiss ? ' lp-field-miss' : ''}`}>
-          <span>Amt</span>
+          <span>Amount</span>
           <input
             value={price}
             inputMode="decimal"
@@ -126,7 +131,7 @@ export function BuyPage({ buy, mode, onSave, onCancel, onRemove, onDuplicate }) 
         </div>
         <div className="lp-row">
           <label className="lp-field">
-            <span>Sku</span>
+            <span>Sku, quarry code</span>
             <input
               value={sku}
               placeholder="PBS-1"
@@ -141,7 +146,7 @@ export function BuyPage({ buy, mode, onSave, onCancel, onRemove, onDuplicate }) 
               placeholder="optional"
               onChange={(event) => setQty(event.target.value)}
             />
-            {qtyMiss ? <span className="lp-field-hint">Qty has to be a number.</span> : null}
+            {qtyMiss ? <span className="lp-field-hint">Qty has to be a number if you fill it in.</span> : null}
           </label>
         </div>
         <label className="lp-field">
