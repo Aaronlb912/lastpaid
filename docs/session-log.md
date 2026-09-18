@@ -53,3 +53,13 @@ Book menu (not More). Cool gray working list. Manila sheet is
 gone. Guest check still opens from a row. Old JSON still loads.
 Do not ship.
 Next session: R-B last-price list (unit, when, hover, last-change).
+
+## 2026-09-18 - R-B through R-G
+
+What runs: http://127.0.0.1:48629/
+What landed: Last-price list with unit, when, sku, last-change.
+Guest check lists every pay, oldest first, last pay huge. Paid
+again prefills. Vendor chips and sort on the book. Qty/sku,
+high/low. j/k Enter n / Escape. Print check or list. 390 keeps
+last price. Old JSON still loads. Do not ship.
+Rebuild letters done. Ship later only if he asks.

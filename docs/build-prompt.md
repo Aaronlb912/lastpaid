@@ -39,28 +39,27 @@ Email on `.example`.
       guest check. They do not share one cream column.
 - [x] R-A. New shell. App frame, not a manila sheet. Find, Add
       buy, quiet Book menu.
-- [ ] R-B. Last-price list. Item, last, unit, when. Last price
+- [x] R-B. Last-price list. Item, last, unit, when. Last price
       is the useful number.
-- [ ] R-C. Guest check. Receipt stays. Full history, last pay
+- [x] R-C. Guest check. Receipt stays. Full history, last pay
       huge. Paid again is primary.
-- [ ] R-D. Write a ticket. Prefill on Paid again. Miss on the
+- [x] R-D. Write a ticket. Prefill on Paid again. Miss on the
       field.
-- [ ] R-E. Vendor filter and sort. Stored on the book.
-- [ ] R-F. Qty, sku, high/low. Last price stays per unit.
-- [ ] R-G. Keyboard, print, empty, 390.
+- [x] R-E. Vendor filter and sort. Stored on the book.
+- [x] R-F. Qty, sku, high/low. Last price stays per unit.
+- [x] R-G. Keyboard, print, empty, 390.
 - [ ] Session ship: screenshots, demo video, README Demo, LinkedIn
       draft, SHIPPED.
 
 ## This session
 
-R-A. New shell: shop bar, find, Add buy, Book menu. List is a
-stub. Guest check still opens from a row. Do not ship.
+Rebuild R-B through R-G. List, check history, Paid again, vendor
+sort, qty/sku, keyboard, print, 390. Do not ship.
 
 ## Next session
 
-R-B. Last-price list: item, last, unit, when. Hover, selected,
-focus. Auto-open one find match. Last-change quiet on the row.
-Open this repo. Do not ship.
+Rebuild letters are done. Ship later only if he asks. Do not
+start the video. Do not mark SHIPPED.
 
 ## Usefulness check
 

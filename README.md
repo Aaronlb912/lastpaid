@@ -36,7 +36,8 @@ import { Workspace, normalizeBook, sampleBook } from './lib/index.js'
 <Workspace value={book} onChange={setBook} />
 ```
 
-`value` is a book: `{ title, buys }`. A buy is `{ id, item,
-vendor, unit, price, date, notes }`. `price` is a number.
+`value` is a book: `{ title, buys, sort }`. `sort` is `item`,
+`date`, or `price`. A buy is `{ id, item, vendor, unit, price,
+date, notes, sku, qty }`. `price` is a number. `qty` is optional.
 `date` is YYYY-MM-DD. Old files still load if they use `name`
 or `amount` instead of `item` and `price`.

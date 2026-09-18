@@ -225,6 +225,52 @@
   cursor: pointer;
 }
 
+.lp-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+  margin: 0 0 12px;
+}
+
+.lp-vendors,
+.lp-sort {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.lp-sort span {
+  font-size: 12px;
+  color: var(--lp-ink-soft);
+}
+
+.lp-vendors button,
+.lp-sort button {
+  background: transparent;
+  border: 1px solid var(--lp-line);
+  color: var(--lp-ink);
+  font: inherit;
+  font-size: 13px;
+  padding: 4px 9px;
+  cursor: pointer;
+}
+
+.lp-vendors button.is-on,
+.lp-sort button.is-on {
+  background: var(--lp-bar);
+  border-color: var(--lp-bar);
+  color: var(--lp-bar-ink);
+}
+
+.lp-vendors button:focus-visible,
+.lp-sort button:focus-visible {
+  outline: 2px solid var(--lp-money);
+  outline-offset: 2px;
+}
+
 .lp-list {
   list-style: none;
   margin: 0;
@@ -249,12 +295,38 @@
 }
 
 .lp-list-row:hover,
-.lp-list-row:focus-visible {
+.lp-list-row:focus-visible,
+.lp-list-row.is-sel {
   background: #e2e7ea;
+}
+
+.lp-list-row.is-sel {
+  box-shadow: inset 3px 0 0 var(--lp-money);
+}
+
+.lp-list-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
 }
 
 .lp-list-item {
   font-size: 16px;
+}
+
+.lp-list-sku {
+  font-size: 12px;
+  color: var(--lp-ink-soft);
+}
+
+.lp-list-meta {
+  font-size: 12px;
+  color: var(--lp-ink-soft);
+}
+
+.lp-list-moved {
+  font-size: 11px;
 }
 
 .lp-list-last {
@@ -264,11 +336,19 @@
   font-weight: 700;
   color: var(--lp-money);
   letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+
+.lp-check-notes {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: var(--lp-ink);
 }
 
 .lp-check-wrap {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   padding: 20px 12px 36px;
   background: #d8dee2;
   min-height: calc(100vh - 52px);
@@ -634,6 +714,10 @@
     font-size: 24px;
   }
 
+  .lp-list-meta {
+    display: none;
+  }
+
   .lp-line-last-pay {
     flex-direction: column;
     align-items: flex-start;
@@ -663,5 +747,11 @@
   .lp-check-wrap {
     background: #fff;
     padding: 0;
+    min-height: 0;
+  }
+
+  .lp-list-row.is-sel {
+    box-shadow: none;
+    background: transparent;
   }
 }

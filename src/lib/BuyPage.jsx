@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { formatPrice, normalizeBuy, parsePrice, ticketNo } from './lastpaid-json.js'
+import { formatPrice, normalizeBuy, parsePrice, parseQty, ticketNo } from './lastpaid-json.js'
 import './lastpaid.css'
 
 export function BuyPage({ buy, mode, onSave, onCancel, onRemove, onDuplicate }) {
@@ -10,6 +10,8 @@ export function BuyPage({ buy, mode, onSave, onCancel, onRemove, onDuplicate }) 
   const [price, setPrice] = useState(isNew && buy.price === 0 ? '' : String(buy.price ?? ''))
   const [date, setDate] = useState(buy.date || '')
   const [notes, setNotes] = useState(buy.notes || '')
+  const [sku, setSku] = useState(buy.sku || '')
+  const [qty, setQty] = useState(buy.qty === '' || buy.qty == null ? '' : String(buy.qty))
   const [miss, setMiss] = useState('')
 
   useEffect(() => {
@@ -35,6 +37,11 @@ export function BuyPage({ buy, mode, onSave, onCancel, onRemove, onDuplicate }) 
       setMiss('price-junk')
       return
     }
+    const parsedQty = parseQty(qty)
+    if (!parsedQty.ok) {
+      setMiss('qty')
+      return
+    }
     setMiss('')
     onSave(normalizeBuy({
       ...buy,
@@ -44,12 +51,15 @@ export function BuyPage({ buy, mode, onSave, onCancel, onRemove, onDuplicate }) 
       price: parsed.value,
       date,
       notes,
+      sku,
+      qty: parsedQty.value,
     }))
   }
 
-  const heading = isNew ? 'New buy' : item.trim() || 'Untitled buy'
+  const heading = isNew ? (buy.item ? buy.item : 'New buy') : item.trim() || 'Untitled buy'
   const itemMiss = miss === 'item'
   const priceMiss = miss === 'price-blank' || miss === 'price-junk'
+  const qtyMiss = miss === 'qty'
   const priceHint = miss === 'price-blank' ? 'Need a price.' : miss === 'price-junk' ? 'Price has to be a number.' : ''
   const parsedStub = parsePrice(price)
   const stubPrice = parsedStub.ok ? formatPrice(parsedStub.value) : price || '—'
@@ -112,6 +122,26 @@ export function BuyPage({ buy, mode, onSave, onCancel, onRemove, onDuplicate }) 
               value={date}
               onChange={(event) => setDate(event.target.value)}
             />
+          </label>
+        </div>
+        <div className="lp-row">
+          <label className="lp-field">
+            <span>Sku</span>
+            <input
+              value={sku}
+              placeholder="PBS-1"
+              onChange={(event) => setSku(event.target.value)}
+            />
+          </label>
+          <label className={`lp-field${qtyMiss ? ' lp-field-miss' : ''}`}>
+            <span>Qty</span>
+            <input
+              value={qty}
+              inputMode="decimal"
+              placeholder="optional"
+              onChange={(event) => setQty(event.target.value)}
+            />
+            {qtyMiss ? <span className="lp-field-hint">Qty has to be a number.</span> : null}
           </label>
         </div>
         <label className="lp-field">

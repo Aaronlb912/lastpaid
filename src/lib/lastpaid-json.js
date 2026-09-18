@@ -79,10 +79,21 @@ export function itemKey(name) {
   return String(name || '').trim().toLowerCase()
 }
 
+export function parseQty(value) {
+  if (typeof value === 'number' && Number.isFinite(value)) return { ok: true, value }
+  const raw = String(value == null ? '' : value).trim()
+  if (!raw) return { ok: true, value: '' }
+  if (!/^\d+(\.\d+)?$/.test(raw)) return { ok: false, reason: 'junk' }
+  const next = Number(raw)
+  if (!Number.isFinite(next)) return { ok: false, reason: 'junk' }
+  return { ok: true, value: next }
+}
+
 export function normalizeBuy(buy, index = 0) {
   const raw = buy && typeof buy === 'object' ? buy : {}
   const parsedPrice = parsePrice(raw.price ?? raw.amount ?? raw.cost)
   const parsedDate = parseDate(raw.date ?? raw.when ?? raw.paid)
+  const parsedQty = parseQty(raw.qty ?? raw.quantity ?? raw.qtyBought)
   return {
     id: String(raw.id || `buy-${index + 1}`),
     item: String(raw.item ?? raw.name ?? raw.product ?? '').trim(),
@@ -91,6 +102,8 @@ export function normalizeBuy(buy, index = 0) {
     price: parsedPrice.ok ? parsedPrice.value : 0,
     date: parsedDate.ok ? parsedDate.iso : String(raw.date ?? raw.when ?? raw.paid ?? '').trim(),
     notes: String(raw.notes ?? '').trim(),
+    sku: String(raw.sku ?? raw.code ?? '').trim(),
+    qty: parsedQty.ok ? parsedQty.value : '',
   }
 }
 
@@ -103,6 +116,8 @@ export function blankBuy() {
     price: 0,
     date: todayIso(),
     notes: '',
+    sku: '',
+    qty: '',
   }
 }
 
@@ -119,7 +134,14 @@ export function blankBook() {
   return {
     title: 'Last paid',
     buys: [],
+    sort: 'item',
   }
+}
+
+function bookSort(value) {
+  const sort = String(value || '').trim()
+  if (sort === 'date' || sort === 'price' || sort === 'item') return sort
+  return 'item'
 }
 
 function looksLikeBuy(raw) {
@@ -141,6 +163,7 @@ export function normalizeBook(data) {
     return {
       title: 'Last paid',
       buys: data.map((buy, index) => normalizeBuy(buy, index)),
+      sort: 'item',
     }
   }
   const raw = data && typeof data === 'object' ? data : {}
@@ -155,18 +178,21 @@ export function normalizeBook(data) {
     return {
       title: String(raw.title || '').trim() || 'Last paid',
       buys: list.map((buy, index) => normalizeBuy(buy, index)),
+      sort: bookSort(raw.sort),
     }
   }
   if (looksLikeBuy(raw)) {
     return {
       title: 'Last paid',
       buys: [normalizeBuy(raw, 0)],
+      sort: 'item',
     }
   }
   if (raw.title) {
     return {
       title: String(raw.title).trim() || 'Last paid',
       buys: [],
+      sort: bookSort(raw.sort),
     }
   }
   return blankBook()
@@ -190,6 +216,60 @@ export function priceDelta(last, previous) {
   return { dir: 'same', amount: 0 }
 }
 
+export function lastPriceMove(recent) {
+  if (!recent || recent.length < 2) return null
+  const last = recent[0]
+  const older = recent.slice(1).find((buy) => buy.price !== last.price)
+  if (!older) return null
+  return {
+    date: last.date,
+    dir: last.price > older.price ? 'up' : last.price < older.price ? 'down' : 'same',
+  }
+}
+
+export function priceRange(buys) {
+  const prices = buys
+    .map((buy) => buy.price)
+    .filter((value) => typeof value === 'number' && Number.isFinite(value))
+  if (prices.length < 2) return null
+  const high = Math.max(...prices)
+  const low = Math.min(...prices)
+  if (high === low) return null
+  return { high, low }
+}
+
+export function bookVendors(buys) {
+  const names = []
+  buys.forEach((buy) => {
+    const vendor = String(buy.vendor || '').trim()
+    if (vendor && !names.includes(vendor)) names.push(vendor)
+  })
+  return names.sort((left, right) => left.localeCompare(right))
+}
+
+export function sortGroups(groups, sort) {
+  const list = [...groups]
+  if (sort === 'date') {
+    return list.sort(
+      (left, right) => dateRank(right.last.date) - dateRank(left.last.date) || left.item.localeCompare(right.item),
+    )
+  }
+  if (sort === 'price') {
+    return list.sort(
+      (left, right) => (right.last.price || 0) - (left.last.price || 0) || left.item.localeCompare(right.item),
+    )
+  }
+  return list.sort((left, right) => left.item.localeCompare(right.item))
+}
+
+export function filterGroupsByVendor(groups, vendor) {
+  const needle = String(vendor || '').trim().toLowerCase()
+  if (!needle) return groups
+  return groups.filter((group) =>
+    group.buys.some((buy) => String(buy.vendor || '').trim().toLowerCase() === needle),
+  )
+}
+
 export function groupItems(buys) {
   const map = new Map()
   buys.forEach((buy) => {
@@ -197,20 +277,21 @@ export function groupItems(buys) {
     if (!map.has(key)) map.set(key, [])
     map.get(key).push(buy)
   })
-  return [...map.entries()]
-    .map(([key, itemBuys]) => {
-      const pays = paysForItem(itemBuys)
-      return {
-        key,
-        item: pays.last.item || 'Untitled item',
-        buys: itemBuys,
-        last: pays.last,
-        previous: pays.previous,
-        recent: pays.recent,
-        delta: priceDelta(pays.last, pays.previous),
-      }
-    })
-    .sort((left, right) => left.item.localeCompare(right.item) || dateRank(right.last.date) - dateRank(left.last.date))
+  return [...map.entries()].map(([key, itemBuys]) => {
+    const pays = paysForItem(itemBuys)
+    return {
+      key,
+      item: pays.last.item || 'Untitled item',
+      buys: itemBuys,
+      last: pays.last,
+      previous: pays.previous,
+      recent: pays.recent,
+      oldest: [...pays.recent].reverse(),
+      delta: priceDelta(pays.last, pays.previous),
+      lastMove: lastPriceMove(pays.recent),
+      range: priceRange(itemBuys),
+    }
+  })
 }
 
 function haystack(buy) {
@@ -220,6 +301,7 @@ function haystack(buy) {
     buy.unit,
     buy.notes,
     buy.date,
+    buy.sku,
     formatPrice(buy.price),
   ]
     .join(' ')

@@ -1,7 +1,19 @@
 export function sampleBook() {
   return {
     title: 'Creek Bed Stone',
+    sort: 'item',
     buys: [
+      {
+        id: 'buy-blue-2024',
+        item: 'Pennsylvania blue stone',
+        vendor: 'Ridge Quarry',
+        unit: 'sq ft',
+        price: 44,
+        date: '2024-09-06',
+        sku: 'PBS-1',
+        qty: 90,
+        notes: 'First quote on the Millvale walk.',
+      },
       {
         id: 'buy-blue-2025',
         item: 'Pennsylvania blue stone',
@@ -9,6 +21,8 @@ export function sampleBook() {
         unit: 'sq ft',
         price: 46.5,
         date: '2025-04-18',
+        sku: 'PBS-1',
+        qty: 120,
         notes: 'First load for the Millvale walk. Ticket in the yard desk.',
       },
       {
@@ -18,6 +32,8 @@ export function sampleBook() {
         unit: 'sq ft',
         price: 51,
         date: '2026-03-11',
+        sku: 'PBS-1',
+        qty: 80,
         notes: 'Nell Farber. nell@creekbed.example. Call before you order another pallet.',
       },
       {
@@ -27,6 +43,8 @@ export function sampleBook() {
         unit: 'ton',
         price: 41,
         date: '2025-10-02',
+        sku: 'PG-38',
+        qty: 6,
         notes: 'Dale Pruitt. dale@creekbed.example.',
       },
       {
@@ -36,6 +54,8 @@ export function sampleBook() {
         unit: 'ton',
         price: 38,
         date: '2026-05-22',
+        sku: 'PG-38',
+        qty: 8,
         notes: 'Same pit. They shaved three dollars.',
       },
       {
@@ -45,6 +65,8 @@ export function sampleBook() {
         unit: 'each',
         price: 14.75,
         date: '2026-06-14',
+        sku: 'LT-8',
+        qty: 24,
         notes: 'Stacked by the fence. Ask Dale if the band is cut.',
       },
       {
@@ -54,6 +76,8 @@ export function sampleBook() {
         unit: 'ton',
         price: 28,
         date: '2026-02-02',
+        sku: 'CR-1',
+        qty: 10,
         notes: 'Rita Alvarez. rita@creekbed.example. Used under the blue stone.',
       },
     ],
@@ -63,6 +87,7 @@ export function sampleBook() {
 export function sampleEmptyBook() {
   return {
     title: 'Creek Bed Stone',
+    sort: 'item',
     buys: [],
   }
 }
