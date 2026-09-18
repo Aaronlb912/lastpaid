@@ -4,36 +4,44 @@ export function Landing({ session, shopTitle, onOpenSample }) {
   return (
     <div className="lp-land">
       <div className="lp-land-copy">
-        <p className="lp-land-kicker">Price log</p>
+        <p className="lp-land-kicker">Before you call</p>
         <h1>Last paid</h1>
-        <p>This is a log of what you paid last time for the same thing.</p>
         <p>
-          Look up an item. The green number is last pay. Open it to see older
-          pays on a guest check.
+          You write down what you paid last time for stone, parts, or anything
+          you buy twice a year, so next time you can look it up before you
+          call.
+        </p>
+        <p>
+          Find the item on the list and read the green number. That is the last
+          price you paid. Click the row if you want to see the older prices
+          too.
         </p>
         <div className="lp-land-actions">
           {session ? (
             <a className="lp-site-primary" href="#/book">
-              Open {shopTitle || 'the log already here'}
+              Open {shopTitle || 'the list'} on this computer
             </a>
           ) : (
             <button type="button" className="lp-site-primary" onClick={onOpenSample}>
-              Try the Creek Bed Stone sample
+              Try Creek Bed Stone, a sample shop
             </button>
           )}
-          <a href="#/in">Use your own shop on this computer</a>
+          <a href="#/in">Put your own shop name on this computer</a>
         </div>
         <p className="lp-land-quiet">
+          There is no signup.
+          {' · '}
           <a href="#/how">How to use it</a>
           {' · '}
-          <a href="#/about">Copy into a React app</a>
+          <a href="#/about">If you already run a React app</a>
         </p>
       </div>
       <div className="lp-land-example">
         <p className="lp-land-caption">
-          Example. Pennsylvania blue stone, last pay $51.
+          This little receipt is an example. They last paid $51 for
+          Pennsylvania blue stone.
         </p>
-        <article className="lp-check lp-land-check" aria-label="Example guest check">
+        <article className="lp-check lp-land-check" aria-label="Example of last prices on a receipt">
           <div className="lp-perf" aria-hidden="true" />
           <div className="lp-check-top">
             <p className="lp-check-date">Mar 11, 2026</p>

@@ -1,21 +1,25 @@
 # Last paid
 
-A price log of what you paid last time for the same thing. Item,
-vendor, unit, price, date. Look it up before you call the quarry.
-Last pay is the useful number. Older pays sit on a guest check.
+You write down what you paid last time for stone, parts, or
+anything you buy twice a year, so next time you can look it up
+before you call. The green number is the last price. Click a
+row if you want the older prices on a little receipt.
 
-The demo has a landing, a shop name on this computer (optional
-PIN, not an account), how to use it, and the log. Drop `src/lib/`
-into a React app you already have. Host apps pass `value` and
-`onChange`. The demo keeps the log in the browser.
+The demo starts on a first page, then you can try a sample shop
+or put a name on this computer (optional numbers, not an
+account). If you already run React, copy `src/lib/` into your
+app and pass `value` and `onChange`. The prices in the demo
+stay in the browser.
 
-The sample is Creek Bed Stone. Pennsylvania blue stone last paid
-$51. Names are fake. Emails end in `.example`.
+The sample is Creek Bed Stone. They last paid $51 for
+Pennsylvania blue stone. Names are fake. Emails end in
+`.example`.
 
 ## Who it is for
 
 A shop or yard that already runs React and buys the same stone
-or parts twice a year. They finish "what did we pay last time."
+or parts twice a year. They want last year's number before they
+call again.
 
 ## Run the demo
 
@@ -26,20 +30,20 @@ npm start
 
 Open http://127.0.0.1:48629/
 
-- `/#/` landing
-- `/#/in` your shop on this computer
-- `/#/book` the price log
+- `/#/` first page
+- `/#/in` name the list on this computer
+- `/#/book` the list of prices
 - `/#/how` how to use it
-- `/#/about` copy into a React app
+- `/#/about` if you already run a React app
 
-Try the Creek Bed Stone sample. Find an item. Last pay is the
-green number. Open a row for the guest check. New item if it is
-not on the list. Book saves a file.
+Try Creek Bed Stone. Find Pennsylvania blue stone. The green
+number is $51. Click the row for the older prices. Add a new
+item if it is not on the list. Book saves a copy.
 
 ## Copy into your app
 
-Copy `src/lib/` into your React `src/`. You do not need the
-landing pages for that.
+Skip the first pages if you already have a React app. Copy
+`src/lib/` into your React `src/`.
 
 ```
 import { Workspace, normalizeBook, sampleBook } from './lib/index.js'

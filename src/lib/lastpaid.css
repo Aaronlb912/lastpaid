@@ -157,7 +157,7 @@
   right: 0;
   top: 100%;
   z-index: 3;
-  min-width: 16rem;
+  min-width: 18rem;
   padding: 8px 0;
   background: #f7f8f9;
   color: var(--lp-ink);

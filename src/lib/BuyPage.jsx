@@ -56,15 +56,15 @@ export function BuyPage({ buy, mode, onSave, onCancel, onRemove, onDuplicate }) 
     }))
   }
 
-  const heading = isNew ? (buy.item ? buy.item : 'New pay') : item.trim() || 'Untitled pay'
+  const heading = isNew ? (buy.item ? buy.item : 'A new price') : item.trim() || 'This price'
   const itemMiss = miss === 'item'
   const priceMiss = miss === 'price-blank' || miss === 'price-junk'
   const qtyMiss = miss === 'qty'
   const priceHint =
     miss === 'price-blank'
-      ? 'Type a price for this pay.'
+      ? 'Please type how much you paid.'
       : miss === 'price-junk'
-        ? 'Price has to be a number.'
+        ? 'The amount has to be a number, like 51.'
         : ''
   const parsedStub = parsePrice(price)
   const stubPrice = parsedStub.ok ? formatPrice(parsedStub.value) : price || '—'
@@ -77,7 +77,7 @@ export function BuyPage({ buy, mode, onSave, onCancel, onRemove, onDuplicate }) 
           <button type="button" className="lp-quiet lp-back lp-chrome" onClick={onCancel}>
             Back to the list
           </button>
-          <p className="lp-check-label">{isNew ? 'New pay' : 'This pay'}</p>
+          <p className="lp-check-label">{isNew ? 'One price you paid' : 'This price'}</p>
         </div>
         <p className="lp-check-no">#{ticketNo(buy.id)}</p>
       </div>
@@ -91,7 +91,7 @@ export function BuyPage({ buy, mode, onSave, onCancel, onRemove, onDuplicate }) 
             onChange={(event) => setItem(event.target.value)}
             autoFocus
           />
-          {itemMiss ? <span className="lp-field-hint">Type an item name.</span> : null}
+          {itemMiss ? <span className="lp-field-hint">Please type what you bought.</span> : null}
         </label>
         <label className="lp-field">
           <span>Vendor</span>
@@ -131,7 +131,7 @@ export function BuyPage({ buy, mode, onSave, onCancel, onRemove, onDuplicate }) 
         </div>
         <div className="lp-row">
           <label className="lp-field">
-            <span>Sku, quarry code</span>
+            <span>Optional code from the seller</span>
             <input
               value={sku}
               placeholder="PBS-1"
@@ -146,7 +146,7 @@ export function BuyPage({ buy, mode, onSave, onCancel, onRemove, onDuplicate }) 
               placeholder="optional"
               onChange={(event) => setQty(event.target.value)}
             />
-            {qtyMiss ? <span className="lp-field-hint">Qty has to be a number if you fill it in.</span> : null}
+            {qtyMiss ? <span className="lp-field-hint">If you fill in a quantity, it has to be a number.</span> : null}
           </label>
         </div>
         <label className="lp-field">

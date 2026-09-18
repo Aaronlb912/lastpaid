@@ -3,31 +3,37 @@ export function How() {
     <article className="lp-page">
       <h1>How to use last paid</h1>
       <p>
-        This is a price log. Creek Bed Stone is the sample on this demo, a fake
-        yard. Names are fake. Emails end in .example.
+        Creek Bed Stone is a fake yard on this demo, so you can click around
+        without using your own prices. The names are made up, and the emails
+        end in .example.
       </p>
       <p>
-        The list is every item they have bought. Last pay is the green number on
-        the right. Pennsylvania blue stone is $51.
+        Here is their list of things they already bought. Pennsylvania blue
+        stone last cost $51. That green number on the right is the last price
+        they paid.
       </p>
       <p>
-        Open a row. That is a guest check. Oldest pay first ($44). Last pay at
-        the bottom ($51).
+        Click that row and you get a little receipt. The older prices are at
+        the top ($44 the first time), and the last price sits at the bottom
+        ($51).
       </p>
       <p>
-        When you buy it again, Pay this again starts the form with yesterday's
-        vendor and price. Ridge Quarry, $51. Change the amount. Save.
+        If they are buying blue stone again, they click Pay this again. The
+        form fills in Ridge Quarry and $51, they change the amount if the
+        quarry moved, and they save.
       </p>
       <p>
-        If the item is not on the list yet, use New item.
+        If it is something that is not on the list yet, they use Add a new
+        item on the green button.
       </p>
       <p>
-        Book is print, save a file, or load a file. The log stays on this
-        computer.
+        Book is the menu for printing, saving a copy to a file, or loading a
+        copy you saved earlier. The prices stay on this computer.
       </p>
       <p>
-        Keys are optional. <kbd>/</kbd> find, <kbd>n</kbd> new item,{' '}
-        <kbd>j</kbd>/<kbd>k</kbd> move, Enter opens, Escape back.
+        You do not need the keyboard, but if you like it, slash finds an item,
+        n adds a new one, j and k move, Enter opens a row, and Escape goes
+        back.
       </p>
     </article>
   )

@@ -97,3 +97,20 @@ What landed: Plain copy. Landing says price log. How walks Creek
 Bed Stone at $51. Shop page is not an account. Book says New
 item and Pay this again. Do not ship.
 Next session: Ship later only if he asks.
+
+## 2026-09-18 - Plain-talk prompt
+
+What runs: http://127.0.0.1:48629/ (copy C still on the page)
+What landed: Voice prompt on disk. Current copy is still clipped
+labels. Next pass uses plainer words and fuller sentences, like
+a coworker explaining it.
+`C:\Users\aaron\OneDrive\Documents\prompts\other prompts\lastpaid-plain-prompt.md`
+Next session: V-A through V-E. Do not ship.
+
+## 2026-09-18 - Voice V-A through V-E
+
+What runs: http://127.0.0.1:48629/
+What landed: Spoken copy. Landing says look it up before you
+call. How walks Creek Bed Stone at $51 like a coworker. Chrome
+says Add a new item and Pay this again. Do not ship.
+Next session: Ship later only if he asks.

@@ -10,7 +10,7 @@ export function SiteShell({ path, session, children }) {
             How to use it
           </a>
           <a href="#/about" className={path === '/about' ? 'is-on' : undefined}>
-            Copy into React
+            For a React app
           </a>
           <a href="#/in" className={path === '/in' ? 'is-on' : undefined}>
             Your shop
@@ -18,12 +18,14 @@ export function SiteShell({ path, session, children }) {
         </nav>
         {session ? (
           <a className="lp-site-primary" href="#/book">
-            Open the log
+            Open the list
           </a>
         ) : null}
       </header>
       <div className="lp-site-body">{children}</div>
-      <footer className="lp-site-foot">The log stays on this computer. No account.</footer>
+      <footer className="lp-site-foot">
+        Your prices stay on this computer. You do not need an account.
+      </footer>
     </div>
   )
 }

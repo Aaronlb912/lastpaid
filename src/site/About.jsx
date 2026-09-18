@@ -1,18 +1,25 @@
 export function About() {
   return (
     <article className="lp-page">
-      <h1>Copy into a React app</h1>
-      <p>You do not need this page to try the demo. Use How to use it instead.</p>
+      <h1>If you already run a React app</h1>
       <p>
-        The log lives in this browser. Naming a shop is a lock on this computer,
-        not an account.
+        Skip this page if you are just trying the demo. How to use it is
+        enough.
       </p>
       <p>
-        If you already run a React app, copy <code>src/lib/</code> into your{' '}
-        <code>src/</code>. Pass <code>value</code> and <code>onChange</code>.
-        The landing and shop pages are only this demo. The README has the import.
+        The prices you save live in this browser on this computer. Putting a
+        shop name on the list is not an account, and nobody emails you.
       </p>
-      <p>Creek Bed Stone names are fake. Emails end in .example.</p>
+      <p>
+        If you already have a React app, copy <code>src/lib/</code> into your{' '}
+        <code>src</code> folder and pass <code>value</code> and{' '}
+        <code>onChange</code>. The first pages of this demo are only here so
+        you can try it. The README has the rest.
+      </p>
+      <p>
+        Creek Bed Stone is a fake yard. The names are made up, and the emails
+        end in .example.
+      </p>
     </article>
   )
 }

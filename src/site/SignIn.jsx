@@ -11,21 +11,21 @@ export function SignIn({ shopTitle, onOpenShop, onOpenSample, onStartBlank }) {
   function check(forBlank) {
     const shopName = name.trim()
     if (!shopName) {
-      setMiss('Type a shop name. It becomes the title on the list.')
+      setMiss('Please type a shop name so the list has a title.')
       return null
     }
     const typed = pin.trim()
     if (stored.pin && sameShop(shopName, stored.name)) {
       if (!typed) {
-        setMiss('Type the PIN you set for this shop on this computer.')
+        setMiss('Type the numbers you chose for this shop on this computer.')
         return null
       }
       if (typed !== stored.pin) {
-        setMiss('That PIN does not match the one saved on this computer.')
+        setMiss('Those numbers do not match what this computer has saved.')
         return null
       }
     } else if (typed && !pinOk(typed)) {
-      setMiss('A PIN has to be 4 digits or more.')
+      setMiss('If you use numbers, use at least four digits.')
       return null
     }
     setMiss('')
@@ -35,10 +35,12 @@ export function SignIn({ shopTitle, onOpenShop, onOpenSample, onStartBlank }) {
 
   return (
     <div className="lp-counter">
-      <h1>Your shop on this computer</h1>
+      <h1>Name the list on this computer</h1>
       <p>
-        Name this computer's shop, then open the price log. This is not an
-        account. There is no email.
+        Type a shop name so the list has a title, then open it. You can add
+        optional numbers if you do not want someone else on this computer
+        opening it. There is no email and no account. If you forget the
+        numbers, start empty or load a saved file.
       </p>
       <form
         className="lp-counter-form"
@@ -59,9 +61,9 @@ export function SignIn({ shopTitle, onOpenShop, onOpenSample, onStartBlank }) {
             }}
           />
         </label>
-        <p className="lp-counter-hint">This name is the title on the list.</p>
+        <p className="lp-counter-hint">This is what you will see at the top of the list.</p>
         <label>
-          PIN, optional
+          Optional numbers
           <input
             type="password"
             inputMode="numeric"
@@ -79,20 +81,20 @@ export function SignIn({ shopTitle, onOpenShop, onOpenSample, onStartBlank }) {
           </p>
         ) : (
           <p className="lp-counter-hint">
-            A PIN only locks this browser. Forget it and start a blank log or
-            load a saved file.
+            Leave this blank if you are the only one using this computer.
           </p>
         )}
         <button type="submit" className="lp-site-primary">
-          {openLabel ? `Open ${openLabel}` : 'Open the log already here'}
+          {openLabel ? `Open the ${openLabel} list` : 'Open the list already here'}
         </button>
       </form>
       <div className="lp-choices">
         <p>
           <button type="button" className="lp-site-text" onClick={onOpenSample}>
-            Try the Creek Bed Stone sample
+            Try Creek Bed Stone
           </button>
-          <span> Practice with a fake yard.</span>
+          {' '}
+          if you want to practice with a fake yard that already has prices.
         </p>
         <p>
           <button
@@ -103,9 +105,10 @@ export function SignIn({ shopTitle, onOpenShop, onOpenSample, onStartBlank }) {
               if (next) onStartBlank(next)
             }}
           >
-            Start a blank log
+            Start empty
           </button>
-          <span> Your own items. Needs a shop name first.</span>
+          {' '}
+          if you want a blank list for your own items. Type a shop name first.
         </p>
       </div>
     </div>

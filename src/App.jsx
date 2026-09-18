@@ -101,9 +101,9 @@ export default function App() {
   useEffect(() => {
     const titles = {
       '/': 'Last paid',
-      '/in': 'Your shop · Last paid',
+      '/in': 'Name the list · Last paid',
       '/how': 'How to use last paid',
-      '/about': 'Copy into a React app · Last paid',
+      '/about': 'If you already run a React app · Last paid',
       '/book': `${book.title} · Last paid`,
     }
     document.title = titles[view] || 'Last paid'
