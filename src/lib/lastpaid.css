@@ -37,6 +37,22 @@
   color: var(--lp-bar-ink);
 }
 
+.lp-home {
+  font: inherit;
+  font-size: 12px;
+  color: #9aa39e;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.lp-home:hover,
+.lp-home:focus-visible {
+  color: var(--lp-bar-ink);
+  text-decoration: underline;
+}
+
 .lp-bar h1 {
   margin: 0;
   font-size: 18px;

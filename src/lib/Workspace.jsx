@@ -21,7 +21,7 @@ import {
 } from './lastpaid-json.js'
 import './lastpaid.css'
 
-export function Workspace({ value, onChange }) {
+export function Workspace({ value, onChange, onHome, onSignOut }) {
   const undoTimer = useRef(null)
   const fileInput = useRef(null)
   const searchRef = useRef(null)
@@ -285,6 +285,11 @@ export function Workspace({ value, onChange }) {
     <div className="lp">
       <div className="lp-app">
         <header className="lp-bar lp-chrome">
+          {onHome ? (
+            <button type="button" className="lp-home" onClick={onHome}>
+              Last paid
+            </button>
+          ) : null}
           {renaming ? (
             <input
               ref={titleInput}
@@ -350,6 +355,11 @@ export function Workspace({ value, onChange }) {
                 <button type="button" onClick={resetSample}>
                   Reset sample
                 </button>
+                {onSignOut ? (
+                  <button type="button" onClick={onSignOut}>
+                    Sign out
+                  </button>
+                ) : null}
               </div>
             </details>
             <input

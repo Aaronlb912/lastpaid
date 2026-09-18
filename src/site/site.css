@@ -1,0 +1,254 @@
+.lp-site {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #eef1f3;
+  color: #1a1f22;
+  font-family: Bahnschrift, 'Trebuchet MS', 'Segoe UI', sans-serif;
+}
+
+.lp-site-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  padding: 10px 18px;
+  background: #1c2220;
+  color: #e8ecea;
+}
+
+.lp-site-brand {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: inherit;
+  text-decoration: none;
+}
+
+.lp-site-brand:hover,
+.lp-site-brand:focus-visible {
+  text-decoration: underline;
+}
+
+.lp-site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 14px;
+}
+
+.lp-site-nav a {
+  color: #c5ccc8;
+  text-decoration: none;
+}
+
+.lp-site-nav a:hover,
+.lp-site-nav a:focus-visible,
+.lp-site-nav a.is-on {
+  color: #e8ecea;
+  text-decoration: underline;
+}
+
+.lp-site-bar .lp-site-primary {
+  margin-left: auto;
+}
+
+.lp-site-primary {
+  display: inline-block;
+  background: #0e6b46;
+  color: #f3faf6;
+  border: 1px solid #0a5437;
+  padding: 7px 12px;
+  font: inherit;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.lp-site-primary:hover,
+.lp-site-primary:focus-visible {
+  background: #0a5437;
+  color: #f3faf6;
+}
+
+.lp-site a:focus-visible,
+.lp-site button:focus-visible,
+.lp-site input:focus-visible {
+  outline: 2px solid #c8f0d4;
+  outline-offset: 2px;
+}
+
+.lp-site-body {
+  flex: 1;
+  width: min(52rem, 100%);
+  margin: 0 auto;
+  padding: 28px 18px 40px;
+}
+
+.lp-site-foot {
+  padding: 12px 18px 20px;
+  font-size: 13px;
+  color: #5c6568;
+  border-top: 1px solid #d4dadd;
+}
+
+.lp-land {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(14rem, 20rem);
+  gap: 28px 32px;
+  align-items: start;
+}
+
+.lp-land-kicker {
+  margin: 0 0 8px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5c6568;
+}
+
+.lp-land h1,
+.lp-page h1,
+.lp-counter h1 {
+  margin: 0 0 12px;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.lp-land p,
+.lp-page p,
+.lp-counter p {
+  margin: 0 0 12px;
+  font-size: 16px;
+  line-height: 1.45;
+  max-width: 36rem;
+}
+
+.lp-land-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin: 18px 0 10px;
+}
+
+.lp-land-actions a,
+.lp-land-quiet a,
+.lp-land-quiet .lp-site-text {
+  color: #1c2220;
+}
+
+.lp-land-quiet {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #5c6568;
+}
+
+.lp-land-check {
+  width: 20rem;
+  max-width: 100%;
+  justify-self: end;
+}
+
+.lp-land-check .lp-line-last {
+  display: block;
+  padding: 10px 0 6px;
+  border-top: 1px solid #1a1f22;
+  margin-top: 4px;
+}
+
+.lp-counter {
+  max-width: 22rem;
+}
+
+.lp-counter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0 18px;
+}
+
+.lp-counter-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  color: #5c6568;
+}
+
+.lp-counter-form input {
+  font: inherit;
+  font-size: 16px;
+  color: #1a1f22;
+  background: #f7f8f9;
+  border: 1px solid #9aa3a6;
+  padding: 8px 10px;
+}
+
+.lp-counter-form .lp-site-primary {
+  align-self: start;
+  margin-top: 4px;
+}
+
+.lp-counter-hint {
+  margin: 0;
+  font-size: 13px;
+  color: #5c6568;
+}
+
+.lp-site-miss {
+  margin: 0;
+  font-size: 14px;
+  color: #a33a28;
+}
+
+.lp-site-text {
+  font: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.lp-page ol {
+  margin: 0 0 16px;
+  padding-left: 1.2rem;
+  max-width: 36rem;
+}
+
+.lp-page li {
+  margin: 0 0 10px;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.lp-page kbd,
+.lp-page code {
+  font-family: 'Cascadia Mono', Consolas, 'Courier New', monospace;
+  font-size: 0.92em;
+  background: #e4e9eb;
+  padding: 0 4px;
+}
+
+@media (max-width: 520px) {
+  .lp-site-bar .lp-site-primary {
+    margin-left: 0;
+  }
+
+  .lp-land {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-land-check {
+    justify-self: start;
+  }
+
+  .lp-land-check .lp-line-last-pay {
+    font-size: 28px;
+  }
+}

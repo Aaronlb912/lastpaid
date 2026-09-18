@@ -63,3 +63,20 @@ again prefills. Vendor chips and sort on the book. Qty/sku,
 high/low. j/k Enter n / Escape. Print check or list. 390 keeps
 last price. Old JSON still loads. Do not ship.
 Rebuild letters done. Ship later only if he asks.
+
+## 2026-09-18 - Site prompt
+
+What runs: http://127.0.0.1:48629/ (book still the first page)
+What landed: Site prompt on disk. Landing, sign in, how, about
+around the book. Login is a shop desk lock in this browser, not
+an account.
+`C:\Users\aaron\OneDrive\Documents\prompts\other prompts\lastpaid-site-prompt.md`
+Next session: P-A through P-E. Do not ship.
+
+## 2026-09-18 - Site pages P-A through P-E
+
+What runs: http://127.0.0.1:48629/
+What landed: Hash site around the book. Landing, sign in (shop
+name, optional PIN on this browser), how, about. Book still the
+guest check and last-price list. No account. Do not ship.
+Next session: Ship later only if he asks.

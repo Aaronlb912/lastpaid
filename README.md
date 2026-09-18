@@ -23,6 +23,12 @@ npm start
 
 Open http://127.0.0.1:48629/
 
+- `/#/` landing
+- `/#/in` sign in (shop name, optional PIN on this browser)
+- `/#/book` the last-price book
+- `/#/how` how to use it
+- `/#/about` local copy, no account
+
 Find an item. Last pay is the useful number. Open a row for the
 guest check. Add a buy. Download JSON from Book.
 

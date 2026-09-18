@@ -5,7 +5,7 @@ up before you call again. JSON in, JSON out. Drop `src/lib/` into
 a React app you already have.
 
 Prompt file (do not wait for a paste):
-`C:\Users\aaron\OneDrive\Documents\prompts\other prompts\lastpaid-rebuild-prompt.md`
+`C:\Users\aaron\OneDrive\Documents\prompts\other prompts\lastpaid-site-prompt.md`
 
 Continue later:
 `C:\Users\aaron\OneDrive\Documents\prompts\multi-session-build-prompt-react.md`
@@ -17,12 +17,11 @@ Local URL: http://127.0.0.1:48629/
 Repo folder: `C:\Users\aaron\Documents\lastpaid`
 
 Pages:
-- Find: type an item. See the last pay, and the one before.
-  Recent buys under that. Add a buy. Reset sample.
-- Buy page: item, vendor, unit, price, date, notes. Save.
-  Escape cancels.
+- Landing, sign in, how, about (site).
+- Book: find an item, last pay, guest check, add a buy.
 
-Auth: none.
+Auth: shop name on this browser. Optional local PIN. No
+server.
 
 Sample: Creek Bed Stone in `src/lib/sample-buys.js`. Fake names.
 Email on `.example`.
@@ -48,18 +47,23 @@ Email on `.example`.
 - [x] R-E. Vendor filter and sort. Stored on the book.
 - [x] R-F. Qty, sku, high/low. Last price stays per unit.
 - [x] R-G. Keyboard, print, empty, 390.
+- [x] P-A. Routes and site shell.
+- [x] P-B. Landing.
+- [x] P-C. Sign in (shop name, optional PIN).
+- [x] P-D. Gate the book. Sign out.
+- [x] P-E. How and About.
 - [ ] Session ship: screenshots, demo video, README Demo, LinkedIn
       draft, SHIPPED.
 
 ## This session
 
-Rebuild R-B through R-G. List, check history, Paid again, vendor
-sort, qty/sku, keyboard, print, 390. Do not ship.
+P-A through P-E. Landing, sign in, how, about around the book.
+Do not ship.
 
 ## Next session
 
-Rebuild letters are done. Ship later only if he asks. Do not
-start the video. Do not mark SHIPPED.
+Site pages landed. Ship later only if he asks. Do not start the
+video. Do not mark SHIPPED.
 
 ## Usefulness check
 
